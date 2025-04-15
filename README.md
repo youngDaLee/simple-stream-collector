@@ -16,4 +16,51 @@
 - 집계 수치 초과 시 알람
 
 ## 사용 방법
+```kotlin
+// 1. 저장소 설정 (InMemoryEventStore는 기본 제공)
+CollectorConfig.useStore(InMemoryEventStore())
+
+// 2. 알람 조건 + 처리 조합 등록
+// 필요 시 Trigger, AlertHandler 구현하여 사용 가능
+AlertmManager.register(
+    AlertRule(
+        trigger = ThresholdTrigger(threshold = 100, duration = 10), // 10초간 100회 이상
+        handler = SlackAlertmHandler(webhookUrl = "https://hooks.slack.com/...")
+    )
+)
+
+// 3. 이벤트 수집
+EventCollector.record(
+    key = "rpc.user.login",
+    duration = 180,
+    tags = mapOf("uri" to "/login", "method" to "POST")
+)
+```
+
+### 기본 수집
+```kotlin
+EventCollector.record("rpc.user.login", duration = 145)
+EventCollector.record("api.page.view")
+```
+
+### 수치 포함 수집 (속도, 점수 등)
+```kotlin
+EventCollector.record(
+    key = "rpc.user.login",
+    duration = 145,
+    score = 3.0
+)
+```
+
+### 부가 태그 포함 수집
+```kotlin
+EventCollector.record(
+    key = "rpc.user.register",
+    duration = 250,
+    tags = mapOf("method" to "POST", "uri" to "/register")
+)
+```
+
+
+
 
