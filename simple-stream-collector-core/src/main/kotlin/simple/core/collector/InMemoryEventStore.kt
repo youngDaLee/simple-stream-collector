@@ -17,7 +17,7 @@ class InMemoryEventStore : EventStore {
      * @param event 수집되는 이벤트
      */
     override fun save(event: EventMetric) {
-        events.computeIfAbsent(event.name) { mutableListOf() }.add(event)
+        events.computeIfAbsent(event.key) { mutableListOf() }.add(event)
     }
 
     /**
