@@ -1,4 +1,4 @@
-package simple.core.model
+package simple.core.collector.model
 
 /**
  * 수집되는 이벤트 단위
