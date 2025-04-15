@@ -1,6 +1,6 @@
 package simple.core.collector
 
-import simple.core.model.EventMetric
+import simple.core.collector.model.EventMetric
 
 /**
  * 수집되는 이벤트를 저장하는 인터페이스

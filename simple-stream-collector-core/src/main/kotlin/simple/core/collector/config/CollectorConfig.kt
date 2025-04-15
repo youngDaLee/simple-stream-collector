@@ -1,4 +1,4 @@
-package simple.core.config
+package simple.core.collector.config
 
 import simple.core.collector.EventCollector
 import simple.core.collector.EventStore

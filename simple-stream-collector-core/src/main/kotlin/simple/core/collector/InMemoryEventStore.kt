@@ -1,6 +1,6 @@
 package simple.core.collector
 
-import simple.core.model.EventMetric
+import simple.core.collector.model.EventMetric
 import java.util.concurrent.ConcurrentHashMap
 
 /**

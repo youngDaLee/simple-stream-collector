@@ -1,6 +1,7 @@
 package simple.core.collector
 
-import simple.core.model.EventMetric
+import simple.core.alert.AlertManager
+import simple.core.collector.model.EventMetric
 
 /**
  * 이벤트 수집의 진입점
