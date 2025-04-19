@@ -17,6 +17,32 @@ todo
 - 슬라이딩 윈도우 평균치 계산
 - 이벤트 호출 속도 분석
 
+## 사용 방법
+```kotlin
+// 저장소 설정
+val store = InMemoryEventStore()
+// 트리거(알랏 발생 조건) 설정
+val trigger = ThresholdTrigger(threshold = 3, duration = 5)
+// 알랏 방식 설정
+val alertHandler = object : AlertHandler {
+    override fun onTriggered(eventKey: String) {
+        println("🚨 [콘솔 알림] '$eventKey' 이벤트가 임계치를 초과했습니다!")
+    }
+}
+// 알랏 룰 설정
+AlertRule(trigger, consoleHandler)
+
+// 이벤트 수집기 생성
+val collector = Collector(
+    store = store,
+    alertRules = listOf(alertRule)
+)
+```
+
+이벤트 수집 예시
+```kotlin
+collector.record("login.success", duration = 123)
+```
 
 ## License
 This project is licensed under the MIT License – see the [LICENSE](./LICENSE) file for details.
