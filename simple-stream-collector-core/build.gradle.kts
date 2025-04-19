@@ -1,10 +1,5 @@
 plugins {
     kotlin("jvm")
-    application
-}
-
-application {
-    mainClass.set("examples.ExampleCoreKt")
 }
 
 dependencies {
