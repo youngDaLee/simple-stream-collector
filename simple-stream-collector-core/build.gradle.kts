@@ -1,5 +1,10 @@
 plugins {
     kotlin("jvm")
+    jacoco
+}
+
+jacoco {
+    toolVersion = "0.8.10"
 }
 
 dependencies {
