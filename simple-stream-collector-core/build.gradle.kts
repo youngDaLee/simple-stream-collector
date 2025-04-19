@@ -19,3 +19,31 @@ kotlin {
 tasks.test {
     useJUnitPlatform()
 }
+
+tasks.jacocoTestReport {
+    dependsOn(tasks.test)
+
+    reports {
+        html.required.set(true)
+        xml.required.set(false)
+        csv.required.set(false)
+    }
+
+    classDirectories.setFrom(
+        fileTree("${buildDir}/classes/kotlin/main") {
+            include(
+                "**",
+            )
+        }
+    )
+
+    sourceDirectories.setFrom(
+        files("src/main/kotlin")
+    )
+
+    executionData.setFrom(
+        fileTree(buildDir) {
+            include("jacoco/test.exec")
+        }
+    )
+}
