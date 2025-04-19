@@ -12,7 +12,8 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.youngDaLee:simple-stream-collector:v0.0.2")
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
+    implementation("com.github.youngDaLee:simple-stream-collector:v0.1.0")
     testImplementation(kotlin("test"))
 }
 
