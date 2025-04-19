@@ -39,11 +39,6 @@ val collector = Collector(
 )
 ```
 
-이벤트 수집 예시
-```kotlin
-collector.record("login.success", duration = 123)
-```
-
 ## License
 This project is licensed under the MIT License – see the [LICENSE](./LICENSE) file for details.
 
