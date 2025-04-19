@@ -1,22 +1,19 @@
 package simple.core.trigger
 
-import java.util.concurrent.ConcurrentHashMap
+import simple.core.collector.model.EventMetric
+import simple.core.trigger.model.TriggerType
 
+/**
+ * 저장된 이벤트 개수에 따라 트리거 발동
+ */
 class ThresholdTrigger (
     private val threshold: Int,
-    private val duration: Long,
+    override val type: TriggerType,
 ) : Trigger {
-    private var buffer = ConcurrentHashMap<String, MutableList<Long>>()
-
-    override fun isTrigger(eventKey: String): Boolean {
-        val currentTime = System.currentTimeMillis()
-        val windowStartTime = currentTime - duration * 1000
-        val events = buffer.computeIfAbsent(eventKey) { mutableListOf() }
-
-        synchronized(buffer) {
-            events.add(currentTime)
-            events.removeIf { it < windowStartTime }
-            return events.size >= threshold
+    override fun isTrigger(event: EventMetric, storedEvents: List<EventMetric>): Boolean {
+        return when (type) {
+            TriggerType.REALTIME -> true
+            TriggerType.STORED -> storedEvents.size >= threshold
         }
     }
 }

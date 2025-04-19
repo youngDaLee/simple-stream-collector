@@ -32,8 +32,8 @@ class EventCollector (
 
         // 알림 조건 확인
         alertRules.forEach { rule ->
-            if (rule.trigger.isTrigger(key)) {
-                rule.handler.onTriggered(key)
+            if (rule.trigger.isTrigger(metric, store.getEvents()[metric.key] ?: emptyList())) {
+                rule.handler.onTriggered(metric.key)
             }
         }
     }

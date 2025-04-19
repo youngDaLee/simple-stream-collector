@@ -28,7 +28,7 @@ class InMemoryEventStore (
      *
      * @return 수집된 이벤트
      */
-    fun getEvents(): Map<String, List<EventMetric>> {
+    override fun getEvents(): Map<String, List<EventMetric>> {
         return events.toMap()
     }
 

@@ -28,4 +28,13 @@ interface EventStore {
      * 저장 주기에 따라 이벤트를 삭제하는 메서드
      */
     fun cleanup()
+
+    /**
+     * 저장된 이벤트를 반환하는 메서드
+     *
+     * @return 수집된 이벤트
+     */
+    fun getEvents(): Map<String, List<EventMetric>> {
+        return emptyMap()
+    }
 }
