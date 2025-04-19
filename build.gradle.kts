@@ -3,10 +3,11 @@ plugins {
 }
 
 allprojects {
-    group = "simple"
-    version = "1.0-SNAPSHOT"
+    group = "com.github.youngDaLee"
+    version = "1.0.0"
 
     repositories {
         mavenCentral()
+        maven { url = uri("https://jitpack.io") }
     }
 }
