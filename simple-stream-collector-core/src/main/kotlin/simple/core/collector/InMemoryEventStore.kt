@@ -4,7 +4,7 @@ import simple.core.collector.model.EventMetric
 import java.util.concurrent.ConcurrentHashMap
 
 /**
- * 수집되는 이벤트를 메모리에 저장하는 클래스
+ * 수집되는 이벤트를 JVM 힙 메모리에 저장하는 클래스
  *
  * @property events 수집되는 이벤트를 저장하는 맵
  */
