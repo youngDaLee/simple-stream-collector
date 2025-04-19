@@ -22,7 +22,7 @@ todo
 // 저장소 설정
 val store = InMemoryEventStore()
 // 트리거(알랏 발생 조건) 설정
-val trigger = ThresholdTrigger(threshold = 3, duration = 5)
+val trigger = ThresholdTrigger(threshold = 3, type = TriggerType.REALTIME)
 // 알랏 방식 설정
 val alertHandler = object : AlertHandler {
     override fun onTriggered(eventKey: String) {
