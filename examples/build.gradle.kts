@@ -2,7 +2,7 @@ plugins {
     kotlin("jvm") version "2.0.21"
 }
 
-group = "simple"
+group = "examples"
 version = "1.0-SNAPSHOT"
 
 repositories {
@@ -11,7 +11,7 @@ repositories {
 }
 
 dependencies {
-    implementation("com.github.youngDaLee:simple-stream-collector:v1.0.0")
+    implementation("com.github.youngDaLee:simple-stream-collector:v0.0.2")
     testImplementation(kotlin("test"))
 }
 
