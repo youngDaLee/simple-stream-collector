@@ -1,18 +1,15 @@
 package simple.core.collector
 
-import simple.core.alert.AlertManager
+import simple.core.alert.model.AlertRule
 import simple.core.collector.model.EventMetric
 
 /**
  * 이벤트 수집의 진입점
  */
-object EventCollector {
-
-    private var store: EventStore = InMemoryEventStore()
-
-    fun configure(customStore: EventStore) {
-        store = customStore
-    }
+class EventCollector (
+    private val store: EventStore = InMemoryEventStore(),
+    private val alertRules: List<AlertRule> = emptyList()
+) {
 
     /**
      * 이벤트를 수집합니다. duration(ms)은 선택입니다.
@@ -23,13 +20,21 @@ object EventCollector {
         value: Double? = null,
         tags: Map<String, String> = emptyMap()
     ) {
-        store.save(
-            EventMetric(
-                key = key,
-                duration = duration,
-                value = value,
-                tags = tags
-            )
+        val metric = EventMetric(
+            key = key,
+            duration = duration,
+            value = value,
+            tags = tags
         )
+
+        // 저장소 저장
+        store.save(metric)
+
+        // 알림 조건 확인
+        alertRules.forEach { rule ->
+            if (rule.trigger.isTrigger(key)) {
+                rule.handler.onTriggered(key)
+            }
+        }
     }
 }
