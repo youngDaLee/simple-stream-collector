@@ -9,6 +9,7 @@ import simple.core.alert.model.AlertRule
 import simple.core.alert.AlertHandler
 import simple.core.collector.model.RetentionPolicy
 import simple.core.trigger.ThresholdTrigger
+import simple.core.trigger.model.TriggerType
 import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.test.assertNotNull
 
@@ -18,7 +19,7 @@ class EventCollectorTest {
     fun `이벤트 수집 및 알랏`() {
         val triggered = AtomicBoolean(false)
         val store = InMemoryEventStore()
-        val trigger = ThresholdTrigger(threshold = 2, duration = 5)
+        val trigger = ThresholdTrigger(threshold = 2, type = TriggerType.STORED)
         val handler = object : AlertHandler {
             override fun onTriggered(eventKey: String) {
                 triggered.set(true)
