@@ -1,5 +1,6 @@
 plugins {
     kotlin("jvm") version "2.0.21"
+    application
 }
 
 group = "examples"
@@ -13,6 +14,10 @@ repositories {
 dependencies {
     implementation("com.github.youngDaLee:simple-stream-collector:v0.0.2")
     testImplementation(kotlin("test"))
+}
+
+application {
+    mainClass.set("examples.MainKt")
 }
 
 tasks.test {
