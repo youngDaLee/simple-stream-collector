@@ -1,6 +1,5 @@
-# simple-stream-collector
-코틀린으로 제작한 실시간 이벤트 스트림 콜렉터 유틸리티 입니다.
-채팅, 페이지 뷰, 아이템 획득 등 실행 도중 발생하는 다양한 이벤트를 kafka나 redis 없이 가볍고 빠르게 수집할 수 있도록 도와주는 경량 라이브러리 입니다.
+# simple-stream-collector (deprecated)
+-> https://github.com/youngDaLee/traclet
 
 ## 개요
 - 실시간으로 들어오는 이벤트 스트림(채팅, 페이지 뷰 등)을 일정 시간 단위로 통계적으로 집계
